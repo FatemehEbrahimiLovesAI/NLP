@@ -1,0 +1,72 @@
+def open_file(file_name):
+    """
+    This function opens a txt file for the user
+    
+        file_name(str): The name of the file to be opened.
+    """
+    try:
+        with open(file_name, 'r', encoding='utf-8') as file:
+            file_content = file.read()
+            print("The operation was successful!")
+        return file_content
+    # The reaction of the program if the file does not exist.
+    except FileNotFoundError:
+        print(f"Error! The file '{file_name}' does not exist!")
+        return None
+    # The reaction of the program for other Errors.
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
+def get_file():
+    """
+    This function receives the function from the user and 
+    if the file is not available in the current folder, it 
+    requests the file name from the user again.
+    """
+    while True:
+        file_name = input("Please enter your file name: ")
+        # 
+        file_content = open_file(file_name)
+        
+        if file_content is not None:
+            return file_content
+        else:
+            print("Please try again with a valid file.")
+            
+def clear_punctuation(this_file_content):
+    """
+    This function removes extra punctuations from the user's text.
+    """
+    file_content = this_file_content
+    punctuations = [',','.','-','+','~','"',"'",'&','^','@','#','_','=',':','!','?','{','}',':','<','>']
+    file_content = ''.join([i for i in file_content if i not in punctuations])
+    return file_content
+    
+
+def count_the_words(this_file_content):
+    """
+    This function counts and prints the number of word repetitions.
+    """
+    # It is used to clear all punctuations with function.
+    file_content = clear_punctuation(this_file_content)
+    # Convert str to a list of words
+    file_content = file_content.split()
+    # Creating a variable to continue checking whether 
+    # the repetition of this word has already been printed or not.
+    present_words = []
+    for i in file_content:
+        if i not in present_words:
+            print(f"({i}) count = {file_content.count(i)}")
+            present_words.append(i)
+        else:
+            continue
+        
+if __name__ == "__main__":
+    # example with a simple str     
+    txt = input("please enter you txt: ")
+    count_the_words(txt)
+
+    # example with opening file
+    file_name = get_file()
+    count_the_words(file_name)
