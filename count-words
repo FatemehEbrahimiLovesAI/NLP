@@ -1,7 +1,7 @@
 def open_file(file_name):
     """
     This function opens a txt file for the user
-    
+
         file_name(str): The name of the file to be opened.
     """
     try:
@@ -28,12 +28,12 @@ def get_file():
         file_name = input("Please enter your file name: ")
         # 
         file_content = open_file(file_name)
-        
+
         if file_content is not None:
             return file_content
         else:
             print("Please try again with a valid file.")
-            
+
 def clear_punctuation(this_file_content):
     """
     This function removes extra punctuations from the user's text.
@@ -42,7 +42,7 @@ def clear_punctuation(this_file_content):
     punctuations = [',','.','-','+','~','"',"'",'&','^','@','#','_','=',':','!','?','{','}',':','<','>']
     file_content = ''.join([i for i in file_content if i not in punctuations])
     return file_content
-    
+
 
 def count_the_words(this_file_content):
     """
@@ -61,12 +61,32 @@ def count_the_words(this_file_content):
             present_words.append(i)
         else:
             continue
-        
-if __name__ == "__main__":
-    # example with a simple str     
-    txt = input("please enter you txt: ")
-    count_the_words(txt)
 
-    # example with opening file
-    file_name = get_file()
-    count_the_words(file_name)
+if __name__ == "__main__":
+    while True:
+        print("please enter your choice:\n 1- write text here.\n 2- enter text from txt file.\n 3- exit")
+        user_choice = int(input("enter your choice:"))
+        print('*'*30)
+        
+        # tokenization the text which user write here
+        if user_choice == 1:
+            txt = input("please enter you txt: ")
+            count_the_words(txt)
+            print('*'*30)
+
+        # tokenization file's text
+        elif user_choice == 2:
+            file_name = get_file()
+            count_the_words(file_name)
+            print('*'*30)
+            
+        # stop the loop
+        elif user_choice == 3:
+            print("ok goodbye!")
+            print('*'*30)
+            break
+            
+        # Response against unauthorized inputs
+        else:
+            print("invalid input! try again")
+            continue
