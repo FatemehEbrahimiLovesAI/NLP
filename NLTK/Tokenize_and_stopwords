@@ -1,0 +1,48 @@
+import nltk
+from nltk.tokenize import sent_tokenize,word_tokenize
+from nltk.corpus import stopwords
+nltk.download('punkt') 
+nltk.download('stopwords')
+
+# english stopwords
+english_stopwords = set(stopwords.worfs('english'))
+
+# We don't have a ready list for stopwords in Persian, so we create it manually.
+persian_stopwords = ['و', 'که', 'در', 'از', 'به', 'با', 'این', 'آن']
+
+english_text1 = "hello everyone, today we have a very important meeting. you must listen carefully."
+english_test2 = "by the way, he start avoiding me. I don't understand why he is doing that!"
+
+persian_text1 = "امیدوارم همگی روز خوبی داشته باشین و با سلامت به خونه برسین، این روزها خیابان ها زیاد امن نیستند"
+persian_text2 = "ما میتونیم انجامش بدیم، بهتون قول میدم. این اولین بار نیست که انجامش میدیم."
+
+# We can separate the words and put them in the list.
+persian_text1_words = word_tokenize(persian_text1)
+english_text1_words = word_tokenize(english_text1)
+
+# We can also separate sentences without separating words
+persian_text2_sent = sent_tokenize(persian_text2)
+english_text2_sent = sent_tokenize(english_text2)
+
+# but for removing stopwords, We need to filter words.
+english_text1_filtered = [word for word in english_text1_words if word.lower() not in english_stopwords]
+persian_text1_filtered = [word for word in persian_text1_words if word.lower() not in persian_stopwords]
+
+# The final result
+print(english_text1)
+print(english_text2)
+print(persian_text1)
+print(persian_text2)
+print("*"*30)
+
+print(persian_text1_words)
+print(english_text1_words)
+print("*"*30)
+
+print(persian_text2_sent)
+print(english_text2_sent)
+print("*"*30)
+
+print(english_text1_filtered)
+print(persian_text1_filtered)
+print("*"*30)
