@@ -5,7 +5,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 # english stopwords
-english_stopwords = set(stopwords.worfs('english'))
+english_stopwords = set(stopwords.words('english'))
 
 # We don't have a ready list for stopwords in Persian, so we create it manually.
 persian_stopwords = ['و', 'که', 'در', 'از', 'به', 'با', 'این', 'آن']
@@ -26,7 +26,7 @@ english_text2_sent = sent_tokenize(english_text2)
 
 # but for removing stopwords, We need to filter words.
 english_text1_filtered = [word for word in english_text1_words if word.lower() not in english_stopwords]
-persian_text1_filtered = [word for word in persian_text1_words if word.lower() not in persian_stopwords]
+persian_text1_filtered = [word for word in persian_text1_words if word not in persian_stopwords]
 
 # The final result
 print(english_text1)
