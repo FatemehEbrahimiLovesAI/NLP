@@ -1,0 +1,30 @@
+# NLP Basics: Stemming in NLTK
+
+Today I got acquainted with the concept of **stemming**.
+
+## What is Stemming?
+Stemming is a method in Natural Language Processing (NLP) to reduce words to their base or root form.  
+For example, the word **playing** can be reduced to **play**.  
+I used the `PorterStemmer` class from the NLTK library to implement this.  
+However, stemming is not perfect and sometimes returns incorrect or incomplete results.  
+In my code, you can see that some words are correctly converted, while others may not be.
+
+---
+
+## Description of My Code
+
+1. **Importing the necessary module:**  
+   I imported `PorterStemmer` from the `nltk.stem` module.
+
+2. **Creating an object:**  
+   I created an instance of the `PorterStemmer` class and named it `stemmer`.  
+   This object allows me to use the `stem()` method for stemming words.
+
+3. **Defining words:**  
+   I manually created a list of words named `words` that I wanted to stem.
+
+4. **Applying stemming:**  
+   I defined `stemmed_words`, which stores the stemmed version of each word from the `words` list.
+
+5. **Printing the results:**  
+   Finally, I printed both the original and the stemmed lists to compare the results.
